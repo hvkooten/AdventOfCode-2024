@@ -14,6 +14,12 @@ class Program
 
         Console.WriteLine($"Total distance for {file1}: {totalDistance1}");
         Console.WriteLine($"Total distance for {file2}: {totalDistance2}");
+
+        int similarityScore1 = CalculateSimilarityScore(file1);
+        int similarityScore2 = CalculateSimilarityScore(file2);
+
+        Console.WriteLine($"Similarity score for {file1}: {similarityScore1}");
+        Console.WriteLine($"Similarity score for {file2}: {similarityScore2}");
     }
 
     static int CalculateTotalDistance(string filePath)
@@ -32,5 +38,21 @@ class Program
         }
 
         return totalDistance;
+    }
+
+    static int CalculateSimilarityScore(string filePath)
+    {
+        var lines = File.ReadAllLines(filePath);
+        var leftNumbers = lines.Select(line => int.Parse(line.Split()[0])).ToList();
+        var rightNumbers = lines.Select(line => int.Parse(line.Split()[1])).ToList();
+
+        int similarityScore = 0;
+        foreach (var number in leftNumbers)
+        {
+            int count = rightNumbers.Count(n => n == number);
+            similarityScore += number * count;
+        }
+
+        return similarityScore;
     }
 }
