@@ -14,9 +14,15 @@ class Program
 
         Console.WriteLine($"Number of safe reports in {file1}: {safeReports1}");
         Console.WriteLine($"Number of safe reports in {file2}: {safeReports2}");
+
+        int safeReports3 = CalculateSafeReports(file1, true);
+        int safeReports4 = CalculateSafeReports(file2, true);
+
+        Console.WriteLine($"Number of safe reports with dampener in {file1}: {safeReports3}");
+        Console.WriteLine($"Number of safe reports with dampener in {file2}: {safeReports4}");
     }
 
-    static int CalculateSafeReports(string filePath)
+    static int CalculateSafeReports(string filePath, bool withDampener = false)
     {
         var lines = File.ReadAllLines(filePath);
         int safeReports = 0;
@@ -24,7 +30,7 @@ class Program
         foreach (var line in lines)
         {
             var levels = line.Split(' ').Select(int.Parse).ToArray();
-            if (IsSafeReport(levels))
+            if (IsSafeReport(levels) || (withDampener && IsSafeWithDampener(levels)))
             {
                 safeReports++;
             }
@@ -56,5 +62,18 @@ class Program
         }
 
         return increasing || decreasing;
+    }
+
+    static bool IsSafeWithDampener(int[] levels)
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            var modifiedLevels = levels.Where((_, index) => index != i).ToArray();
+            if (IsSafeReport(modifiedLevels))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
