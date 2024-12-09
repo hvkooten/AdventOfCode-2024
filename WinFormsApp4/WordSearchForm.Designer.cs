@@ -22,10 +22,12 @@ namespace WordSearchApp
             verticalLabel = new System.Windows.Forms.Label();
             horizontalLabel = new System.Windows.Forms.Label();
             diagonalLabel = new System.Windows.Forms.Label();
+            xmasPatternLabel = new System.Windows.Forms.Label();
             totalLabel = new System.Windows.Forms.Label();
             verticalOutput = new System.Windows.Forms.TextBox();
             horizontalOutput = new System.Windows.Forms.TextBox();
             diagonalOutput = new System.Windows.Forms.TextBox();
+            xmasPatternOutput = new System.Windows.Forms.TextBox();
             totalOutput = new System.Windows.Forms.TextBox();
             SuspendLayout();
             // 
@@ -105,14 +107,24 @@ namespace WordSearchApp
             diagonalLabel.TabIndex = 6;
             diagonalLabel.Text = "Diagonal:";
             // 
+            // xmasPatternLabel
+            // 
+            xmasPatternLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            xmasPatternLabel.Location = new System.Drawing.Point(14, 544);
+            xmasPatternLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            xmasPatternLabel.Name = "xmasPatternLabel";
+            xmasPatternLabel.Size = new System.Drawing.Size(88, 23);
+            xmasPatternLabel.TabIndex = 7;
+            xmasPatternLabel.Text = "X-MAS Pattern:";
+            // 
             // totalLabel
             // 
             totalLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            totalLabel.Location = new System.Drawing.Point(14, 544);
+            totalLabel.Location = new System.Drawing.Point(14, 574);
             totalLabel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             totalLabel.Name = "totalLabel";
             totalLabel.Size = new System.Drawing.Size(88, 23);
-            totalLabel.TabIndex = 7;
+            totalLabel.TabIndex = 8;
             totalLabel.Text = "Total:";
             // 
             // verticalOutput
@@ -123,7 +135,7 @@ namespace WordSearchApp
             verticalOutput.Name = "verticalOutput";
             verticalOutput.ReadOnly = true;
             verticalOutput.Size = new System.Drawing.Size(597, 23);
-            verticalOutput.TabIndex = 8;
+            verticalOutput.TabIndex = 9;
             // 
             // horizontalOutput
             // 
@@ -133,7 +145,7 @@ namespace WordSearchApp
             horizontalOutput.Name = "horizontalOutput";
             horizontalOutput.ReadOnly = true;
             horizontalOutput.Size = new System.Drawing.Size(597, 23);
-            horizontalOutput.TabIndex = 9;
+            horizontalOutput.TabIndex = 10;
             // 
             // diagonalOutput
             // 
@@ -143,23 +155,33 @@ namespace WordSearchApp
             diagonalOutput.Name = "diagonalOutput";
             diagonalOutput.ReadOnly = true;
             diagonalOutput.Size = new System.Drawing.Size(597, 23);
-            diagonalOutput.TabIndex = 10;
+            diagonalOutput.TabIndex = 11;
+            // 
+            // xmasPatternOutput
+            // 
+            xmasPatternOutput.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            xmasPatternOutput.Location = new System.Drawing.Point(110, 544);
+            xmasPatternOutput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            xmasPatternOutput.Name = "xmasPatternOutput";
+            xmasPatternOutput.ReadOnly = true;
+            xmasPatternOutput.Size = new System.Drawing.Size(597, 23);
+            xmasPatternOutput.TabIndex = 12;
             // 
             // totalOutput
             // 
             totalOutput.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            totalOutput.Location = new System.Drawing.Point(110, 544);
+            totalOutput.Location = new System.Drawing.Point(110, 574);
             totalOutput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             totalOutput.Name = "totalOutput";
             totalOutput.ReadOnly = true;
             totalOutput.Size = new System.Drawing.Size(597, 23);
-            totalOutput.TabIndex = 11;
+            totalOutput.TabIndex = 13;
             // 
             // WordSearchForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(721, 577);
+            ClientSize = new System.Drawing.Size(721, 607);
             Controls.Add(wordInput);
             Controls.Add(textInput);
             Controls.Add(calculateButton);
@@ -167,10 +189,12 @@ namespace WordSearchApp
             Controls.Add(verticalLabel);
             Controls.Add(horizontalLabel);
             Controls.Add(diagonalLabel);
+            Controls.Add(xmasPatternLabel);
             Controls.Add(totalLabel);
             Controls.Add(verticalOutput);
             Controls.Add(horizontalOutput);
             Controls.Add(diagonalOutput);
+            Controls.Add(xmasPatternOutput);
             Controls.Add(totalOutput);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "WordSearchForm";
@@ -186,10 +210,12 @@ namespace WordSearchApp
         private System.Windows.Forms.Label verticalLabel;
         private System.Windows.Forms.Label horizontalLabel;
         private System.Windows.Forms.Label diagonalLabel;
+        private System.Windows.Forms.Label xmasPatternLabel;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.TextBox verticalOutput;
         private System.Windows.Forms.TextBox horizontalOutput;
         private System.Windows.Forms.TextBox diagonalOutput;
+        private System.Windows.Forms.TextBox xmasPatternOutput;
         private System.Windows.Forms.TextBox totalOutput;
     }
 }
