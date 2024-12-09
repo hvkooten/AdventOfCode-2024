@@ -12,14 +12,20 @@ class Program
         string file3 = "file3.txt";
         string file4 = "file4.txt";
 
-        int sumOfMiddlePageNumbers1 = Calculate(file1, file2);
-        int sumOfMiddlePageNumbers2 = Calculate(file3, file4);
+        int sumOfMiddlePageNumbers1 = Calculate1(file1, file2);
+        int sumOfMiddlePageNumbers2 = Calculate1(file3, file4);
+
+        Console.WriteLine($"Sum of middle page numbers for first calculation: {sumOfMiddlePageNumbers1}");
+        Console.WriteLine($"Sum of middle page numbers for second calculation: {sumOfMiddlePageNumbers2}");
+
+        sumOfMiddlePageNumbers1 = Calculate2(file1, file2);
+        sumOfMiddlePageNumbers2 = Calculate2(file3, file4);
 
         Console.WriteLine($"Sum of middle page numbers for first calculation: {sumOfMiddlePageNumbers1}");
         Console.WriteLine($"Sum of middle page numbers for second calculation: {sumOfMiddlePageNumbers2}");
     }
 
-    static int Calculate(string file1, string file2)
+    static int Calculate1(string file1, string file2)
     {
         var rules = File.ReadAllLines(file1);
         var updates = File.ReadAllLines(file2);
@@ -28,6 +34,22 @@ class Program
         var updatesList = ParseUpdates(updates);
 
         var validUpdates = updatesList.Where(update => IsValidUpdate(update, pageOrderRules)).ToList();
+        var middlePageNumbers = validUpdates.Select(update => update[update.Count / 2]).ToList();
+        var sumOfMiddlePageNumbers = middlePageNumbers.Sum();
+
+        return sumOfMiddlePageNumbers;
+    }
+
+    static int Calculate2(string file1, string file2)
+    {
+        var rules = File.ReadAllLines(file1);
+        var updates = File.ReadAllLines(file2);
+
+        var pageOrderRules = ParsePageOrderRules(rules);
+        var updatesList = ParseUpdates(updates);
+
+        var reorderedUpdates = updatesList.Select(update => ReorderUpdate(update, pageOrderRules)).ToList();
+        var validUpdates = reorderedUpdates.Where(update => IsValidUpdate(update, pageOrderRules)).ToList();
         var middlePageNumbers = validUpdates.Select(update => update[update.Count / 2]).ToList();
         var sumOfMiddlePageNumbers = middlePageNumbers.Sum();
 
@@ -85,5 +107,27 @@ class Program
         }
 
         return true;
+    }
+
+    static List<int> ReorderUpdate(List<int> update, Dictionary<int, List<int>> pageOrderRules)
+    {
+        var reorderedUpdate = new List<int>(update);
+        reorderedUpdate.Sort((page1, page2) =>
+        {
+            if (pageOrderRules.ContainsKey(page1) && pageOrderRules[page1].Contains(page2))
+            {
+                return -1;
+            }
+            else if (pageOrderRules.ContainsKey(page2) && pageOrderRules[page2].Contains(page1))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        });
+
+        return reorderedUpdate;
     }
 }
