@@ -1,44 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 class Program
 {
     static void Main()
     {
-        string input = @"
-47|53
-97|13
-97|61
-97|47
-75|29
-61|13
-75|53
-29|13
-97|29
-53|29
-61|53
-97|53
-61|29
-47|13
-75|47
-97|75
-47|61
-75|61
-47|29
-75|13
-53|13
+        string file1 = "file1.txt";
+        string file2 = "file2.txt";
+        string file3 = "file3.txt";
+        string file4 = "file4.txt";
 
-75,47,61,53,29
-97,61,53,29,13
-75,29,13
-75,97,47,61,53
-61,13,29
-97,13,75,29,47";
+        int sumOfMiddlePageNumbers1 = Calculate(file1, file2);
+        int sumOfMiddlePageNumbers2 = Calculate(file3, file4);
 
-        var sections = input.Split(new[] { "\n\n" }, StringSplitOptions.None);
-        var rules = sections[0].Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-        var updates = sections[1].Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        Console.WriteLine($"Sum of middle page numbers for first calculation: {sumOfMiddlePageNumbers1}");
+        Console.WriteLine($"Sum of middle page numbers for second calculation: {sumOfMiddlePageNumbers2}");
+    }
+
+    static int Calculate(string file1, string file2)
+    {
+        var rules = File.ReadAllLines(file1);
+        var updates = File.ReadAllLines(file2);
 
         var pageOrderRules = ParsePageOrderRules(rules);
         var updatesList = ParseUpdates(updates);
@@ -47,7 +31,7 @@ class Program
         var middlePageNumbers = validUpdates.Select(update => update[update.Count / 2]).ToList();
         var sumOfMiddlePageNumbers = middlePageNumbers.Sum();
 
-        Console.WriteLine($"Sum of middle page numbers: {sumOfMiddlePageNumbers}");
+        return sumOfMiddlePageNumbers;
     }
 
     static Dictionary<int, List<int>> ParsePageOrderRules(string[] rules)
