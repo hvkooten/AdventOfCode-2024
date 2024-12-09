@@ -41,7 +41,7 @@ class Program
         for (int i = 1; i < levels.Length; i++)
         {
             int diff = levels[i] - levels[i - 1];
-            if (diff < 1 || diff > 3)
+            if (Math.Abs(diff) < 1 || Math.Abs(diff) > 3)
             {
                 return false;
             }
