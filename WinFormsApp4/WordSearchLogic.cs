@@ -117,7 +117,7 @@ namespace WordSearchApp
             {
                 diagonals.Add(GetDiagonal(0, j, 1, -1));
             }
-
+            diagonals.RemoveAt(diagonals.Count - 1);
             return diagonals;
         }
 

@@ -41,7 +41,7 @@ class Program
     static int Process2File(string filePath)
     {
         string content = File.ReadAllText(filePath);
-        var matches = Regex.Matches(content, @"(do\(\)|don't\(\)|mul\((\d+),(\d+)\))");
+        var matches = Regex.Matches(content, @"(do\(\)|don't\(\)|do\(\)|mul\((\d+),(\d+)\))");
 
         bool mulEnabled = true;
         int sum = 0;
