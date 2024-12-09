@@ -77,7 +77,7 @@ class Program
                 int page1 = update[i];
                 int page2 = update[j];
 
-                if (pageOrderRules.ContainsKey(page1) && pageOrderRules[page1].Contains(page2))
+                if (!pageOrderRules.ContainsKey(page1) || !pageOrderRules[page1].Contains(page2))
                 {
                     return false;
                 }
