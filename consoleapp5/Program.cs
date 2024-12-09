@@ -48,7 +48,8 @@ class Program
         var pageOrderRules = ParsePageOrderRules(rules);
         var updatesList = ParseUpdates(updates);
 
-        var reorderedUpdates = updatesList.Select(update => ReorderUpdate(update, pageOrderRules)).ToList();
+        var nonValidUpdates = updatesList.Where(update => !IsValidUpdate(update, pageOrderRules)).ToList();
+        var reorderedUpdates = nonValidUpdates.Select(update => ReorderUpdate(update, pageOrderRules)).ToList();
         var validUpdates = reorderedUpdates.Where(update => IsValidUpdate(update, pageOrderRules)).ToList();
         var middlePageNumbers = validUpdates.Select(update => update[update.Count / 2]).ToList();
         var sumOfMiddlePageNumbers = middlePageNumbers.Sum();
