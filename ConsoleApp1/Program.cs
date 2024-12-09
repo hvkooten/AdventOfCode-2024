@@ -6,8 +6,8 @@ class Program
 {
     static void Main()
     {
-        string file1 = "ConsoleApp1/TextFile1.txt";
-        string file2 = "ConsoleApp1/TextFile2.txt";
+        string file1 = "TextFile1.txt";
+        string file2 = "TextFile2.txt";
 
         int totalDistance1 = CalculateTotalDistance(file1);
         int totalDistance2 = CalculateTotalDistance(file2);
@@ -19,8 +19,8 @@ class Program
     static int CalculateTotalDistance(string filePath)
     {
         var lines = File.ReadAllLines(filePath);
-        var leftNumbers = lines.Select(line => int.Parse(line.Split()[0])).ToList();
-        var rightNumbers = lines.Select(line => int.Parse(line.Split()[1])).ToList();
+        var leftNumbers = lines.Select(line => int.Parse(line.Split("   ")[0])).ToList();
+        var rightNumbers = lines.Select(line => int.Parse(line.Split("   ")[1])).ToList();
 
         leftNumbers.Sort();
         rightNumbers.Sort();
