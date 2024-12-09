@@ -43,8 +43,8 @@ class Program
     static int CalculateSimilarityScore(string filePath)
     {
         var lines = File.ReadAllLines(filePath);
-        var leftNumbers = lines.Select(line => int.Parse(line.Split()[0])).ToList();
-        var rightNumbers = lines.Select(line => int.Parse(line.Split()[1])).ToList();
+        var leftNumbers = lines.Select(line => int.Parse(line.Split("   ")[0])).ToList();
+        var rightNumbers = lines.Select(line => int.Parse(line.Split("   ")[1])).ToList();
 
         int similarityScore = 0;
         foreach (var number in leftNumbers)
