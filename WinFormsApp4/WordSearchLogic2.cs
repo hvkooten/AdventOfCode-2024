@@ -37,8 +37,23 @@ namespace WordSearchApp
             {
                 for (int j = 0; j < cols - 2; j++)
                 {
-                   if (grid[i, j] == 'M' && grid[i + 1, j + 1] == 'A' && grid[i + 2, j + 2] == 'S' &&
-                        grid[i, j + 2] == 'M' && grid[i + 2, j] == 'S')
+                    if (grid[i, j] == 'M' && grid[i + 1, j + 1] == 'A' && grid[i + 2, j + 2] == 'S' &&
+                         grid[i, j + 2] == 'M' && grid[i + 2, j] == 'S')
+                    {
+                        count++;
+                    }
+                    if (grid[i, j] == 'S' && grid[i + 1, j + 1] == 'A' && grid[i + 2, j + 2] == 'M' &&
+                         grid[i, j + 2] == 'S' && grid[i + 2, j] == 'M')
+                    {
+                        count++;
+                    }
+                    if (grid[i, j] == 'M' && grid[i + 1, j + 1] == 'A' && grid[i + 2, j + 2] == 'S' &&
+                         grid[i, j + 2] == 'S' && grid[i + 2, j] == 'M')
+                    {
+                        count++;
+                    }
+                    if (grid[i, j] == 'S' && grid[i + 1, j + 1] == 'A' && grid[i + 2, j + 2] == 'M' &&
+                         grid[i, j + 2] == 'M' && grid[i + 2, j] == 'S')
                     {
                         count++;
                     }

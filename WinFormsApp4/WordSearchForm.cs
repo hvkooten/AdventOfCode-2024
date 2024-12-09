@@ -15,9 +15,9 @@ namespace WordSearchApp
             string word = wordInput.Text;
             string text = textInput.Text;
             WordSearchLogic logic = new WordSearchLogic(text);
-            WordSearchLogic logic2 = new WordSearchLogic2(text);
+            WordSearchLogic2 logic2 = new WordSearchLogic2(text);
             var (verticalCount, horizontalCount, diagonalCount, totalCount) = logic.SearchWord(word);
-            var xmasPatternCount = logic2.SearchWord(word);
+            var xmasPatternCount = logic2.SearchWord();
             verticalOutput.Text = verticalCount.ToString();
             horizontalOutput.Text = horizontalCount.ToString();
             diagonalOutput.Text = diagonalCount.ToString();
