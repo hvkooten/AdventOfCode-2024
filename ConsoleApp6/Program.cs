@@ -11,7 +11,7 @@ class Program
         foreach (var file in files)
         {
             var map = LoadMap(file);
-            var distinctPositions = SimulateGuardPatrol(map);
+            var distinctPositions = SimulateGuardPatrol(map, file);
             Console.WriteLine($"Number of distinct positions visited for {file}: {distinctPositions}");
         }
     }
@@ -34,7 +34,7 @@ class Program
         return map;
     }
 
-    static int SimulateGuardPatrol(char[,] map)
+    static int SimulateGuardPatrol(char[,] map, string file)
     {
         int rows = map.GetLength(0);
         int cols = map.GetLength(1);
@@ -71,7 +71,12 @@ class Program
                 case '<': nextCol--; break;
             }
 
-            if (nextRow < 0 || nextRow >= rows || nextCol < 0 || nextCol >= cols || map[nextRow, nextCol] == '#')
+            if (nextRow < 0 || nextRow >= rows || nextCol < 0 || nextCol >= cols)
+            {
+                break;
+            }
+
+            if (map[nextRow, nextCol] == '#')
             {
                 guardDirection = TurnRight(guardDirection);
             }
@@ -81,11 +86,6 @@ class Program
                 guardCol = nextCol;
                 visitedPositions.Add((guardRow, guardCol));
                 map[guardRow, guardCol] = GetDirectionChar(guardDirection);
-            }
-
-            if (guardRow < 0 || guardRow >= rows || guardCol < 0 || guardCol >= cols)
-            {
-                break;
             }
         }
 
