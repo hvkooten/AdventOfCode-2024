@@ -54,6 +54,12 @@ class Program
 
         long nextIndex = index + 1;
         return CheckCombinations(testValue, numbers, nextIndex, currentResult + numbers[nextIndex]) ||
-               CheckCombinations(testValue, numbers, nextIndex, currentResult * numbers[nextIndex]);
+               CheckCombinations(testValue, numbers, nextIndex, currentResult * numbers[nextIndex]) ||
+               CheckCombinations(testValue, numbers, nextIndex, ConcatenateNumbers(currentResult, numbers[nextIndex]));
+    }
+
+    static long ConcatenateNumbers(long num1, long num2)
+    {
+        return long.Parse($"{num1}{num2}");
     }
 }
