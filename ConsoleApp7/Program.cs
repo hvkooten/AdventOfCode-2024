@@ -10,23 +10,23 @@ class Program
         string file1 = "TextFile1.txt";
         string file2 = "TextFile2.txt";
 
-        int totalCalibrationResult1 = CalculateTotalCalibrationResult(file1);
-        int totalCalibrationResult2 = CalculateTotalCalibrationResult(file2);
+        var totalCalibrationResult1 = CalculateTotalCalibrationResult(file1);
+        var totalCalibrationResult2 = CalculateTotalCalibrationResult(file2);
 
         Console.WriteLine($"Total calibration result for {file1}: {totalCalibrationResult1}");
         Console.WriteLine($"Total calibration result for {file2}: {totalCalibrationResult2}");
     }
 
-    static int CalculateTotalCalibrationResult(string filePath)
+    static long CalculateTotalCalibrationResult(string filePath)
     {
         var lines = File.ReadAllLines(filePath);
-        int totalCalibrationResult = 0;
+        long totalCalibrationResult = 0;
 
         foreach (var line in lines)
         {
             var parts = line.Split(':');
-            int testValue = int.Parse(parts[0]);
-            var numbers = parts[1].Trim().Split(' ').Select(int.Parse).ToArray();
+            long testValue = long.Parse(parts[0]);
+            var numbers = parts[1].Trim().Split(' ').Select(long.Parse).ToArray();
 
             if (IsValidEquation(testValue, numbers))
             {
@@ -37,19 +37,22 @@ class Program
         return totalCalibrationResult;
     }
 
-    static bool IsValidEquation(int testValue, int[] numbers)
+    static bool IsValidEquation(long testValue, long[] numbers)
     {
         return CheckCombinations(testValue, numbers, 0, numbers[0]);
     }
 
-    static bool CheckCombinations(int testValue, int[] numbers, int index, int currentResult)
+    static bool CheckCombinations(long testValue, long[] numbers, long index, long currentResult)
     {
         if (index == numbers.Length - 1)
         {
-            return currentResult == testValue;
+            if (currentResult == testValue)
+                return true;
+            else
+                return false;
         }
 
-        int nextIndex = index + 1;
+        long nextIndex = index + 1;
         return CheckCombinations(testValue, numbers, nextIndex, currentResult + numbers[nextIndex]) ||
                CheckCombinations(testValue, numbers, nextIndex, currentResult * numbers[nextIndex]);
     }
