@@ -2,5 +2,5 @@
 
 a repo to store Advent Of Code sample apps to find the solution to these puzzles
 
-##Licenses
+## Licenses
 You can read our licenses here: [License](licence.md)
