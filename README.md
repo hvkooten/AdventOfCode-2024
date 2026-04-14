@@ -3,4 +3,4 @@
 a repo to store Advent Of Code sample apps to find the solution to these puzzles
 
 ## Licenses
-You can read our licenses here: [License](licence.md)
+You can read our licenses here: [License](LICENSE)
