@@ -1,0 +1,67 @@
+name: Bug Form report
+description: Report a bug in the project
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please provide as much detail as possible.
+
+  - type: input
+    id: bug_title
+    attributes:
+      label: Bug Title
+      description: A brief description of the bug.
+      placeholder: Short and descriptive summary of the bug
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: Bug Description
+      description: A detailed description of the bug.
+      placeholder: Steps to reproduce the behavior, what you expected to happen, and what actually happened
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Information about the environment where the bug was found (e.g., OS, browser, version)
+      placeholder: e.g., Windows 10, Chrome 88
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: The steps needed to reproduce the bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen.
+      placeholder: Describe what you expected to happen when you followed the steps
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other context or information you think might be relevant.
+      placeholder: Add any other context about the problem here
